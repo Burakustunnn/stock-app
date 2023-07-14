@@ -88,13 +88,8 @@ const Products = () => {
   ]
 
   useEffect(() => {
-    // getStockData("products")
-    // getStockData("categories")
-    // getStockData("brands")
-
-    //! Promise All
     getProCatBrand()
-  }, []) // eslint-disable-line
+  }, [])
 
   return (
     <div>

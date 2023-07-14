@@ -30,7 +30,7 @@ const Purchases = () => {
     getProCatBrand()
     getStockData("purchases")
     getStockData("firms")
-  }, []) // eslint-disable-line
+  }, []) 
 
   const columns = [
     {

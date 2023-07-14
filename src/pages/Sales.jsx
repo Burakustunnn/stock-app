@@ -105,7 +105,7 @@ const Sales = () => {
   useEffect(() => {
     getProCatBrand()
     getStockData("sales")
-  }, []) // eslint-disable-line
+  }, []) 
 
   return (
     <div>
