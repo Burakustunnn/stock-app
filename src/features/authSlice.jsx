@@ -1,12 +1,12 @@
-import { createSlicer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const authSlice = createSlicer({
+const authSlice = createSlice({
   name: "auth",
 
   initialState: {
-    currentUser: [],
+    currentUser: null,
     loading: false,
-    errrors: false,
+    error: false,
     isAdmin: false,
     token: null,
   },
@@ -38,6 +38,7 @@ const authSlice = createSlicer({
     },
   },
 });
+
 export const {
   fetchStart,
   loginSuccess,
@@ -45,5 +46,4 @@ export const {
   registerSuccess,
   fetchFail,
 } = authSlice.actions;
-
 export default authSlice.reducer;
