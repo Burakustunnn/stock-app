@@ -12,7 +12,7 @@ import MenuListItems from "../components/MenuListItems";
 import { useSelector } from "react-redux";
 import useAuthCall from "../hooks/useAuthCall";
 import { Outlet } from "react-router-dom";
-import { blueGrey } from "@mui/material/colors";
+import { blueGrey, deepPurple } from "@mui/material/colors";
 import { useState } from "react";
 
 const drawerWidth = 200;
@@ -86,7 +86,7 @@ function Dashboard(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: blueGrey[900],
+              backgroundColor: deepPurple[700],
             },
           }}
         >
@@ -99,7 +99,7 @@ function Dashboard(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: blueGrey[900],
+              backgroundColor: deepPurple[700],
             },
           }}
           open

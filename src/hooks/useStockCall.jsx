@@ -1,88 +1,81 @@
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import {
   fetchFail,
   getSuccess,
   fetchStart,
   getProCatBrandSuccess,
-} from "../features/stockSlice"
-import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
-import useAxios from "./useAxios"
+} from "../features/stockSlice";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import useAxios from "./useAxios";
 
 const useStockCall = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const { axiosWithToken } = useAxios()
+  const { axiosWithToken } = useAxios();
 
   const getStockData = async (url) => {
-    
-    dispatch(fetchStart())
+    dispatch(fetchStart());
     try {
-      
-      const { data } = await axiosWithToken(`stock/${url}/`)
-      dispatch(getSuccess({ data, url }))
+      const { data } = await axiosWithToken(`stock/${url}/`);
+      dispatch(getSuccess({ data, url }));
     } catch (error) {
-    
-      dispatch(fetchFail())
+      dispatch(fetchFail());
     }
-  }
+  };
 
   const deleteStockData = async (url, id) => {
-    dispatch(fetchStart())
+    dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`stock/${url}/${id}/`)
-      toastSuccessNotify(`${url} successfuly deleted`)
-      getStockData(url)
+      await axiosWithToken.delete(`stock/${url}/${id}/`);
+      toastSuccessNotify(`${url} successfuly deleted`);
+      getStockData(url);
     } catch (error) {
-     
-      dispatch(fetchFail())
-      toastErrorNotify(`${url} can not be deleted`)
+      dispatch(fetchFail());
+      toastErrorNotify(`${url} can not be deleted`);
     }
-  }
+  };
 
   const postStockData = async (url, info) => {
-    dispatch(fetchStart())
+    dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`stock/${url}/`, info)
-      toastSuccessNotify(`${url} successfuly posted`)
-      getStockData(url)
+      await axiosWithToken.post(`stock/${url}/`, info);
+      toastSuccessNotify(`${url} successfuly posted`);
+      getStockData(url);
     } catch (error) {
-     
-      dispatch(fetchFail())
-      toastErrorNotify(`${url} can not be posted`)
+      dispatch(fetchFail());
+      toastErrorNotify(`${url} can not be posted`);
     }
-  }
+  };
 
   const putStockData = async (url, info) => {
-    dispatch(fetchStart())
+    dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`stock/${url}/${info.id}/`, info)
-      toastSuccessNotify(`${url} successfuly updated`)
-      getStockData(url)
+      await axiosWithToken.put(`stock/${url}/${info.id}/`, info);
+      toastSuccessNotify(`${url} successfuly updated`);
+      getStockData(url);
     } catch (error) {
-     
-      dispatch(fetchFail())
-      toastErrorNotify(`${url} can not be updated`)
+      dispatch(fetchFail());
+      toastErrorNotify(`${url} can not be updated`);
     }
-  }
+  };
 
   const getProCatBrand = async () => {
-    dispatch(fetchStart())
+    dispatch(fetchStart());
     try {
       const [products, categories, brands] = await Promise.all([
         axiosWithToken.get("stock/products/"),
         axiosWithToken.get("stock/categories/"),
         axiosWithToken.get("stock/brands/"),
-      ])
+      ]);
 
       dispatch(
         getProCatBrandSuccess([products?.data, categories?.data, brands?.data])
-      )
+      );
     } catch (error) {
-    
-      dispatch(fetchFail())
-      toastErrorNotify(`Data can not be fetched`)
+      dispatch(fetchFail());
+      toastErrorNotify(`Data can not be fetched`);
     }
-  }
+  };
 
   return {
     getStockData,
@@ -90,7 +83,7 @@ const useStockCall = () => {
     postStockData,
     putStockData,
     getProCatBrand,
-  }
-}
+  };
+};
 
-export default useStockCall
+export default useStockCall;

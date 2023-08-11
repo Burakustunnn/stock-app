@@ -28,6 +28,7 @@ const useAuthCall = () => {
       toastSuccessNotify("Login performed");
       navigate("/stock");
     } catch (error) {
+      toastErrorNotify("Login can not be performed");
       dispatch(fetchFail());
     }
   };
