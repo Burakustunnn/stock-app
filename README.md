@@ -8,6 +8,8 @@
 - `@mui/material-ui`
 - `@emotion/react`
 - `@emotion/styled`
+- `@tremor/react`
+
 
 
 
